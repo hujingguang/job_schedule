@@ -1,0 +1,16 @@
+job1:
+  - /usr/local/bin/job.sh
+  - /usr/local/bin/job1.sh
+  - required:
+      - job2
+job2:
+  - /usr/local/bin/job2.sh
+  - /usr/local/bin/job4.sh
+  - required:
+      - job3
+job3:
+  - /usr/local/bin/job5.sh
+
+job4:
+  - /usr/local/bin/job111.sh
+
