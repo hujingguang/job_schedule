@@ -149,9 +149,6 @@ def _check_dependency_job(job):
     return 1
 
 
-
-
-
 def do_task(job,script):
     global _STATUS,_REPORT_TASK,_ERROR_TASK,_OK_TASK
     while True:
@@ -186,7 +183,6 @@ def do_task(job,script):
 		scripts_dict[k]=2
 	    break
 
-
 def main():
     global _STATUS
     threads=[]
@@ -202,9 +198,6 @@ def main():
     _REPORT_TASK=_ERROR_TASK+_OK_TASK
     send_message(_REPORT_TASK)
 
-
-
-
 def send_message(mess):
     web_url='your dingding webhook address'
     mess=mess
@@ -214,7 +207,6 @@ def send_message(mess):
 	r=requests.post(web_url,headers=headers,data=json.dumps(data))
     except Exception as e:
 	logger.info(str(e))
-
 
 if __name__=='__main__':
     if len(sys.argv) != 2:
