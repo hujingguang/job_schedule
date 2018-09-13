@@ -171,14 +171,13 @@ def do_task(job,script):
 	        else:
 		   _STATUS[job][script]=1
 		   _OK_TASK=_OK_TASK+'Job: '+job+" Script: "+script+"执行成功  耗时: "+str(use_time)+'s\n'
-		time.sleep(10)
 	    except Exception as e:
 		logger.error(str(e))
 	    finally:
 		break
 	elif result == 0:
-	    logger.info('Sleep 3s ,等待依赖任务执行完')
-	    time.sleep(3)
+	    logger.info('Sleep 5s ,等待依赖任务执行完')
+	    time.sleep(5)
 	else:
 	    logger.info('依赖任务执行失败,Job: %s 中断执行' %job)
 	    _ERROR_TASK=_ERROR_TASK+'依赖任务执行失败 导致Job: '+job+'执行失败\n'
