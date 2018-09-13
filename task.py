@@ -161,14 +161,17 @@ def do_task(job,script):
 	    cmd='/bin/bash '+script+' &>/dev/null'
 	    logger.info('do scripts: '+cmd)
 	    try:
+		begin_time=time.time()
 		result=os.system(cmd)
-		time.sleep(10)
+		end_time=time.time()
+		use_time=int(end_time-begin_time)
 		if result != 0:
 		   _STATUS[job][script]=2
 		   _ERROR_TASK=_ERROR_TASK+'Job: '+job+" Script: "+script+'执行失败\n'
 	        else:
 		   _STATUS[job][script]=1
-		   _OK_TASK=_OK_TASK+'Job: '+job+" Script: "+script+"执行成功\n"
+		   _OK_TASK=_OK_TASK+'Job: '+job+" Script: "+script+"执行成功  耗时: "+str(use_time)+'s\n'
+		time.sleep(10)
 	    except Exception as e:
 		logger.error(str(e))
 	    finally:
