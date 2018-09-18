@@ -42,6 +42,12 @@ LOG_INFO={
 	}
 DEBUG=False
 DEFAULT_CONF_FILE=os.path.join(os.path.abspath(os.path.dirname(__file__)),'task.yml')
+_STATUS={}
+_DEPENDENCY={}
+_REPORT_TASK="任务执行情况报告: \n"
+_ERROR_TASK=''
+_OK_TASK=''
+
 def init_logger():
     global DEBUG,LOG_INFO
     logging.basicConfig(level=logging.DEBUG,filename='/dev/null')
@@ -66,11 +72,6 @@ def init_logger():
 	LOGGER.addHandler(rotate_handler)
 init_logger()
 logger=logging.getLogger('Task')
-_STATUS={}
-_DEPENDENCY={}
-_REPORT_TASK="任务执行情况报告: \n"
-_ERROR_TASK=''
-_OK_TASK=''
 
 def load_configure(conf_file=DEFAULT_CONF_FILE):
     assert os.path.exists(conf_file),"文件不存在！"
