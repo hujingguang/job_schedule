@@ -155,6 +155,7 @@ def do_task(job,script):
     while True:
 	result=_check_dependency_job(job)
 	if result==1:
+	    start_date=datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 	    logger.info('开始执行Job: %s , Script: %s' %(job,script))
 	    cmd='/bin/bash '+script+' &>/dev/null'
 	    logger.info('do scripts: '+cmd)
@@ -168,7 +169,7 @@ def do_task(job,script):
 		   _ERROR_TASK=_ERROR_TASK+'Job: '+job+" Script: "+script+'执行失败\n'
 	        else:
 		   _STATUS[job][script]=1
-		   _OK_TASK=_OK_TASK+'Job: '+job+" Script: "+script+"执行成功  耗时: "+str(use_time)+'s\n'
+		   _OK_TASK=_OK_TASK+'Job: '+job+"Start Time: "+start_date+" Run Script: "+script+"执行成功  耗时: "+str(use_time)+'s\n'
 	    except Exception as e:
 		logger.error(str(e))
 	    finally:
