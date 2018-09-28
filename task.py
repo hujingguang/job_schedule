@@ -133,7 +133,6 @@ def init_task(conf):
 def _check_dependency_job(job):
     global _STATUS,_DEPENDENCY
     depend_jobs=_DEPENDENCY[job]
-    FLAG=1
     Failed=0
     Running=0
     for depend_job in depend_jobs:
